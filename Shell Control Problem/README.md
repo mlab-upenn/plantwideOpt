@@ -6,30 +6,24 @@ The Shell Standard Control Problem is a well-known benchmark problem that involv
 
 ### Process Description
 
-A **fractionator** (or distillation column) is a vertical cylindrical vessel used in petroleum refineries to separate crude oil into different products based on boiling points. In this specific case, the fractionator processes heavy crude oil to separate it into:
+A fractionator (or distillation column) is a vertical cylindrical vessel used in petroleum refineries to separate crude oil into different products based on boiling points. In this specific case, the fractionator processes heavy crude oil to separate it into:
 
 - **Top products**: Light components (LPG, Gasoline)
 - **Middle products**: Intermediate components (Diesel, Kerosene) 
 - **Bottom products**: Heavy residuals (Bunker Fuel, Asphalt)
-
-### System Complexity
-
-The heavy oil fractionator exhibits:
-
-- **3 control inputs (manipulated variables)**, **2 measured disturbances**, and **7 measured outputs**
-- Significant transport lags (0-28 seconds) between inputs and outputs
-- First-order responses with widely varying time constants (2-60 seconds)
-- Changes in one input affect multiple outputs (strong coupling)
-- Gain and time constant values vary with operating conditions
 
 ## System Inputs
 
 The system has 3 controlled inputs and 2 measured disturbance inputs:
 
 **u1** - **Top Draw**: Controls the withdrawal rate of light products from the top of the column
+
 **u2** - **Side Draw**: Controls the withdrawal rate of intermediate products from the side of the column
+
 **u3** - **Bottoms Reflux Duty**: Controls the heat input (reboiler duty) at the bottom of the column
+
 **d1** - **Upper Reflux Duty**: Upper reflux flow measured disturbance
+
 **d2** - **Intermediate Reflux Duty**: Intermediate reflux flow measured disturbance
 
 ## System Outputs
@@ -37,16 +31,22 @@ The system has 3 controlled inputs and 2 measured disturbance inputs:
 The system has 7 outputs measuring temperature:
 
 **v1** - **Top End Point**: Temperature/composition of top product
+
 **v2** - **Side End Point**: Temperature/composition of side product
+
 **v3** - **Top Temperature**: Temperature in the top section of the column 
+
 **v4** - **Upper Reflux Temperature**: Temperature of upper reflux stream
+
 **v5** - **Side Draw Temperature**: Temperature at the side draw point
+
 **v6** - **Intermediate Reflux Temperature**: Temperature of intermediate reflux 
+
 **v7** - **Bottoms Reflux Temperature**: Temperature of bottom product/reboiler outlet
 
 ## Transfer Function
 
-The system is represented as a **7×5 linear transfer function matrix**, where each element describes the relationship between one input and one measured output:
+The system is represented as a 7×5 linear transfer function matrix, where each element describes the relationship between one input and one measured output:
 
 $$G(s) = \begin{bmatrix}
 G_{11}(s) & G_{12}(s) & G_{13}(s) & G_{14}(s) & G_{15}(s) \\
