@@ -81,6 +81,8 @@ D Matrix (2×2):
 
 ## Accuracy & Performance:
 
+<img width="2086" height="1184" alt="test_validation" src="https://github.com/user-attachments/assets/4100a2cb-34b2-4dc1-adb4-2f6673a13a6c" />
+
 Mean Absolute Error = Y1: 8.30e-14, Y2: 1.94e-13
 Maximum Absolute Error = Y1: 3.77e-13, Y2: 5.04e-13
 R² Score = Y1: 1.000000, Y2: 1.000000
