@@ -2,13 +2,15 @@
 
 This model implements **Linear Time-Invariant (LTI) system identification** on a simple dynamic process using the **N4SID algorithm** (Numerical algorithms for Subspace State Space System Identification). Our goal is to identify a discrete-time state-space model from input-output measurements and validate its accuracy.
 
+![DIP-3](https://github.com/user-attachments/assets/496bf53e-4ca7-43d0-a9b0-e1d2ebb1f85b)
+
 ## Problem Statement:
 
 The input dataset is `simple_dynamic_process.xlsx` containing two sheets: 
     - Training Data: 2,001 samples with 2 inputs (U1, U2) and 2 outputs (Y1, Y2)
     - Testing Data: 2,001 samples with 2 inputs (U1, U2) and 2 outputs (Y1, Y2)
 
-Data Characteristics**:
+Data Characteristics:
     - Synthetic, noise-free data from a controlled dynamic system
     - Time is sampling index only (not a regressor or model input)
     - Input ranges: U1, U2 ∈ [-10, 10]
@@ -20,14 +22,7 @@ We aim to identify a 2nd-order LTI state-space model that:
     - Is continuous
     - Can be used for prediction and control
 
-We choose N4SID for state-space identification as it:
-    - Requires only input-output measurements, no prior model knowledge
-    - No hyperparameters to tune
-    - Uses subspace methods which are asymptotically optimal for LTI systems
-    - Based on numerical linear algebra (SVD, QR decomposition)
-
-
-N4SID constructs Hankel matrices from input-output measurements, and performs QR decomposition and SVD to extract system order and observability/controllability structure. It reduces the decomposition to a 2nd-order system. It extracts four system matrices:
+We choose N4SID for state-space identification as it requires only input-output measurements, no prior model knowledge, no hyperparameters. N4SID first constructs Hankel matrices from input-output measurements. These matrices capture temporal dynamics in a structured way. Then it performs SVD to extract state evolution information, system order, and past input/output relationships, captured by the U,Σ and V matrices respectively. With state information extracted from SVD, it performs least squares to extract four system matrices:
 
 ```
 Discrete-time State-Space Model:
